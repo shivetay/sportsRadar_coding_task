@@ -1,18 +1,26 @@
-import express from 'express'
-import cors from 'cors'
-import { xss } from 'express-xss-sanitizer'
+import express from "express";
+import cors from "cors";
+import { apiErrorMiddleware } from "./appError";
+import { createSimulationRoutes } from "./routes/simulationRoutes";
+import { createSimulationService } from "./services/simulationService";
 
-const app: express.Application = express();
+export const simulationService = createSimulationService();
 
+const app = express();
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL ?? true,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  })
+);
+app.use(express.json({ limit: "10kb" }));
 
-//Middleware
-app.use(cors({origin: process.env.CLIENT_URL, credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}))
-app.use(express.json({limit: '10kb'}))
-app.use(xss())
+app.use(createSimulationRoutes(simulationService));
 
-//ROUTES
+app.get("/health", (_req, res) => res.status(200).json({ status: "ok" }));
+
+app.use(apiErrorMiddleware);
 
 export default app;
