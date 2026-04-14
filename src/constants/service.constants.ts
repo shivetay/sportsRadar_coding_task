@@ -3,7 +3,7 @@ import { TeamName } from '../types/simulationTypes';
 export const START_COOLDOWN_MS = 5000;
 export const MAX_SECONDS = 9;
 
-export const TEAM_PAIRS = [
+export const TEAM_PAIRS: { homeTeam: TeamName; awayTeam: TeamName }[] = [
   { homeTeam: "Germany", awayTeam: "Poland" },
   { homeTeam: "Brazil", awayTeam: "Mexico" },
   { homeTeam: "Argentina", awayTeam: "Uruguay" }
