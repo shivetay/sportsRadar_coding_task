@@ -1,0 +1,40 @@
+{
+  "name": "sportsRadar_coding_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.3.2",
+    "express-xss-sanitizer": "^2.0.2",
+    "ws": "^8.18.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/express-xss-sanitizer": "^2.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "@types/supertest": "^6.0.3",
+    "@types/ws": "^8.5.14",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
